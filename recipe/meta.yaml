@@ -1,5 +1,4 @@
-{% set version = '1.1-1' %}
-
+{% set version = '1.1-2' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,38 +9,45 @@ package:
 source:
   fn: sfsmisc_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/sfsmisc_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/sfsmisc/sfsmisc_{{ version }}.tar.gz
-  sha256: 0eaab03d3023233f4e869616a5cbc58939f8ac8fa0f94ae1d1dd7d4fb95ff54b
+    - {{ cran_mirror }}/src/contrib/sfsmisc_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/sfsmisc/sfsmisc_{{ version }}.tar.gz
+  sha256: 808734644863d102263134634b89dc856dbaadc4d54c32ae697f3e1b0214f831
 
 build:
+  merge_build_host: True  # [win]
   number: 0
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
-
   run:
     - r-base
 
 test:
   commands:
-    - $R -e "library('sfsmisc')"  # [not win]
+    - $R -e "library('sfsmisc')"           # [not win]
     - "\"%R%\" -e \"library('sfsmisc')\""  # [win]
 
 about:
   home: https://CRAN.R-project.org/package=sfsmisc
   license: GPL (>= 2)
-  summary: Useful utilities ['goodies'] from Seminar fuer Statistik ETH Zurich, quite a few related
-    to graphics; some were ported from S-plus.
-  license_family: GPL
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'   # [unix]
-  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'   # [win]
+  summary: Useful utilities ['goodies'] from Seminar fuer Statistik ETH Zurich, some of which
+    were ported from S-plus in the 1990's. For graphics, have pretty (Log-scale) axes,
+    an enhanced Tukey-Anscombe plot, combining histogram and boxplot, 2d-residual plots,
+    a 'tachoPlot()', pretty arrows, etc. For robustness, have a robust F test and robust
+    range(). For system support, notably on Linux, provides 'Sys.*()' functions with
+    more access to system and CPU information. Finally, miscellaneous utilities such
+    as simple efficient prime numbers, integer codes, Duplicated(), toLatex.numeric()
+    and is.whole().
+  license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
@@ -50,3 +56,4 @@ extra:
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer

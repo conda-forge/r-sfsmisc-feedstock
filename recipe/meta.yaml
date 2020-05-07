@@ -1,4 +1,4 @@
-{% set version = "1.1-6" %}
+{% set version = "1.1-7" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/sfsmisc_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/sfsmisc/sfsmisc_{{ version }}.tar.gz
-  sha256: 57b22cdd713e71e9235ff1ace8cdf73564bfdcee4b018f3d7cde6fb35493db11
+  sha256: 74b83829251cb06dc5da6e789a5ab1859b249423d58e116ac5039fe034aae689
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
@@ -36,10 +36,8 @@ test:
 about:
   home: https://CRAN.R-project.org/package=sfsmisc
   license: GPL (>= 2)
-  summary: Useful utilities ['goodies'] from Seminar fuer Statistik ETH Zurich, some of which were ported from S-plus in the 1990's. For graphics, have pretty (Log-scale)
-    axes, an enhanced Tukey-Anscombe plot, combining histogram and boxplot, 2d-residual plots, a 'tachoPlot()', pretty arrows, etc. For robustness, have a robust
-    F test and robust range(). For system support, notably on Linux, provides 'Sys.*()' functions with more access to system and CPU information. Finally, miscellaneous
-    utilities such as simple efficient prime numbers, integer codes, Duplicated(), toLatex.numeric() and is.whole().
+  summary: Useful utilities ['goodies'] from Seminar fuer Statistik ETH Zurich, some of which were ported from S-plus in the 1990's. For graphics, have pretty (Log-scale) axes, an enhanced Tukey-Anscombe plot, combining histogram and boxplot, 2d-residual plots, a 'tachoPlot()', pretty arrows, etc. For robustness, have a
+    robust F test and robust range(). For system support, notably on Linux, provides 'Sys.*()' functions with more access to system and CPU information. Finally, miscellaneous utilities such as simple efficient prime numbers, integer codes, Duplicated(), toLatex.numeric() and is.whole().
   license_family: GPL3
   license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2
 

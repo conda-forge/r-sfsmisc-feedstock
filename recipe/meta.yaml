@@ -1,4 +1,4 @@
-{% set version = "1.1-15" %}
+{% set version = "1.1-16" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/sfsmisc_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/sfsmisc/sfsmisc_{{ version }}.tar.gz
-  sha256: 4afa42cf83a287f62cac21741fc0559dee9dbd69dee59a740defce9a0e7c81e6
+  sha256: 511b4a661e3cfec540eb3d08f67b715f3cda398eb135a011b9be84305c11436c
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/

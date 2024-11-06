@@ -1,4 +1,4 @@
-{% set version = "1.1-19" %}
+{% set version = "1.1-20" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/sfsmisc_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/sfsmisc/sfsmisc_{{ version }}.tar.gz
-  sha256: 869931dd35d2e18cf2f960b86da2638b7a03c92288c6d7a736a10fa5585cf23b
+  sha256: 44630fa1821c01d57b03b4d7d4b1db32e04b83c5b931ee452b5e18cc59c3776b
 
 build:
   number: 0
